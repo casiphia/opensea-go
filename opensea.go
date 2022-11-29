@@ -47,3 +47,22 @@ func (c *Client) get(ctx context.Context, resource string, params ...restgo.IPar
 	}
 	return rsp, nil
 }
+
+func (c *Client) post(ctx context.Context, resource string, params ...restgo.IParam) (restgo.IResponse, error) {
+	var rsp, err = c.Execute(ctx, "POST", resource, params...)
+	if err != nil {
+		return nil, err
+	}
+	if c.retryWhenFreqLimit && rsp.StatusCode() == http.StatusTooManyRequests {
+		var countValue = ctx.Value(countCtxKey)
+		var count = c.retryCount
+		if countValue != nil {
+			count = countValue.(int)
+		}
+		if count != 0 {
+			time.Sleep(c.retryInterval)
+			return c.post(WrapperCountContext(ctx, count-1), resource, params...)
+		}
+	}
+	return rsp, nil
+}

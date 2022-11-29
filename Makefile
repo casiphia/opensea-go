@@ -3,6 +3,3 @@ lint:
 	go vet ./...
 	go mod tidy
 	golangci-lint run ./...
-
-abigen:
-	abigen --pkg contract --abi contract/WyvernExchange.abi --out contract/wyvernexchange.go
