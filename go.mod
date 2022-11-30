@@ -6,12 +6,15 @@ require (
 	github.com/casiphia/gopkg v0.0.0-20221123085503-ac5ee8e1ed53
 	github.com/json-iterator/go v1.1.12
 	github.com/k0kubun/pp/v3 v3.2.0
+	github.com/mitchellh/mapstructure v1.5.0
+	github.com/nshafer/phx v0.2.0
 	github.com/shopspring/decimal v1.3.1
 )
 
 require (
 	github.com/fatih/structtag v1.2.0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
+	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
